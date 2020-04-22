@@ -284,6 +284,7 @@ export const queuePostRenderEffect = __FEATURE_SUSPENSE__
  * })
  * ```
  */
+//对于泛型的使用。还是函数的柯里化的使用。
 export function createRenderer<
   HostNode = RendererNode,
   HostElement = RendererElement
@@ -1950,9 +1951,10 @@ function baseCreateRenderer(
     n: getNextHostNode,
     o: options
   }
-
+//声明类型用的。
   let hydrate: ReturnType<typeof createHydrationFunctions>[0] | undefined
   let hydrateNode: ReturnType<typeof createHydrationFunctions>[1] | undefined
+  //入参的时候只有options，createHydrationFns不存在。
   if (createHydrationFns) {
     ;[hydrate, hydrateNode] = createHydrationFns(internals as RendererInternals<
       Node,

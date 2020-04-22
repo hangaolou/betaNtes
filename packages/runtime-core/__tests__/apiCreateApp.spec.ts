@@ -96,7 +96,7 @@ describe('api: createApp', () => {
     expect(serializeInner(root)).toBe(`3,2`)
     expect('[Vue warn]: injection "__proto__" not found.').toHaveBeenWarned()
   })
-
+  //希望未来五月新上班时搞定。犯其至难，图其至远。
   test('component', () => {
     const Root = {
       // local override

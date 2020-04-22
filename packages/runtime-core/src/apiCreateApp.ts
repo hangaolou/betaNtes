@@ -82,6 +82,7 @@ export type Plugin =
     }
 
 export function createAppContext(): AppContext {
+//NO = () => false
   return {
     config: {
       isNativeTag: NO,
@@ -104,17 +105,18 @@ export type CreateAppFunction<HostElement> = (
   rootComponent: PublicAPIComponent,
   rootProps?: Data | null
 ) => App<HostElement>
-
+//入参仅有render
 export function createAppAPI<HostElement>(
   render: RootRenderFunction,
   hydrate?: RootHydrateFunction
 ): CreateAppFunction<HostElement> {
+  //createApp(Root)入参仅有Root对象。
   return function createApp(rootComponent, rootProps = null) {
     if (rootProps != null && !isObject(rootProps)) {
       __DEV__ && warn(`root props passed to app.mount() must be an object.`)
       rootProps = null
     }
-
+//返回一个对象，定义了一些初始化属性。
     const context = createAppContext()
     const installedPlugins = new Set()
 
